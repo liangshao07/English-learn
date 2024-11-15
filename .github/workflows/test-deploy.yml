@@ -1,15 +1,15 @@
-name: 测试部署
+name: Test deployment
 
 on:
   pull_request:
     branches:
       - main
-    # 如果你想要进一步定义触发、路径以及其他内容，请检阅 Github Actions 文档
-    # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#on
+    # Review gh actions docs if you want to further define triggers, paths, etc
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
   test-deploy:
-    name: 测试部署
+    name: Test deployment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
           node-version: 18
           cache: yarn
 
-      - name: 安装依赖
+      - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: 测试构建网站
+      - name: Test build website
         run: yarn build

@@ -1,5 +1,4 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches:
@@ -18,12 +17,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: yarn
-
+          cache: npm  # 将此处修改为'npm'，适配npm依赖管理
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install --legacy-peer-deps  # 使用npm install替换yarn install
       - name: Build website
-        run: yarn build
+        run: npm run build  # 对应修改为npm的构建命令，假设构建脚本在package.json里定义为"build"
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
